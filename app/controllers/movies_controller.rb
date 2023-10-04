@@ -7,16 +7,16 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
     @all_ratings = Movie.all_ratings  
     
     ratings_checked = params[:ratings]
     if ratings_checked.present?
       @ratings_to_show = ratings_checked.keys
-      puts @ratings_to_show
     else
       @ratings_to_show = Array.new
     end
+
+    @movies = Movie.with_ratings(@ratings_to_show)
   end
 
   def new
