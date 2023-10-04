@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @sorting_header = params[:sort]
     @all_ratings = Movie.all_ratings 
     
     ratings_checked = params[:ratings]
