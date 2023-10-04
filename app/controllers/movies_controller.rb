@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @all_ratings = Movie.all_ratings  
+    @all_ratings = Movie.all_ratings 
     
     ratings_checked = params[:ratings]
     if ratings_checked.present?
