@@ -9,10 +9,10 @@ class MoviesController < ApplicationController
   def index
 
     @all_ratings = Movie.all_ratings 
-   # if !params[:home].present?
-     # params[:ratings] = session[:selected_ratings]
-    #  params[:sort] = session[:selected_sort]
-   # end
+    if !params[:home].present?
+      params[:ratings] = session[:selected_ratings]
+      params[:sort] = session[:selected_sort]
+    end
     
     session[:selected_ratings] = params[:ratings]
     session[:selected_sort] = params[:sort] 
