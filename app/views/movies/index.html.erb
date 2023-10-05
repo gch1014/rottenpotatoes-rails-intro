@@ -18,11 +18,11 @@
   <thead>
     <tr>
       <th class="<%= (@sorting_header == 'movietitle') ? 'hilite text-primary' : '' %>">
-        <%= link_to 'Movie Title', movies_path(sort: 'movietitle', ratings: Hash[session[:selected_ratings].map { |rating| [rating, '1'] }]), id: 'title_header' %>
+        <%= link_to 'Movie Title', movies_path(sort: 'movietitle', ratings: Hash[session[:selected_ratings].map { |rating| [rating, '1'] }], home: 1), id: 'title_header' %>
       </th>	
       <th>Rating</th>
       <th class="<%= (@sorting_header == 'releasedate') ? 'hilite text-primary' : '' %>">
-        <%= link_to 'Release Date', movies_path(sort: 'releasedate', ratings: Hash[session[:selected_ratings].map { |rating| [rating, '1'] }]), id: 'release_date_header' %>
+        <%= link_to 'Release Date', movies_path(sort: 'releasedate', ratings: Hash[session[:selected_ratings].map { |rating| [rating, '1'] }], home: 1), id: 'release_date_header' %>
       </th>
       <th>More Info</th>
     </tr>
@@ -40,10 +40,10 @@
           <%= movie.release_date %>
         </td>
         <td>
-          <%= link_to "More about #{movie.title}", movie_path(movie, home: 1) %>
+          <%= link_to "More about #{movie.title}", movie_path(movie) %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Add new movie', new_movie_path(home: 1), :class => 'btn btn-primary' %>
+<%= link_to 'Add new movie', new_movie_path, :class => 'btn btn-primary' %>
