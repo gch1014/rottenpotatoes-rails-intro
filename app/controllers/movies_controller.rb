@@ -9,6 +9,13 @@ class MoviesController < ApplicationController
   def index
 
     @all_ratings = Movie.all_ratings 
+    if params[:home].present?
+      session[:selected_ratings] = params[:ratings]
+      session[:selected_sort] = params[:sort]
+    else
+      session[:selected_ratings] ||= [] 
+      session[:selected_sort] ||= []
+    end 
     
     ratings_checked = params[:ratings]
     if ratings_checked.present?
