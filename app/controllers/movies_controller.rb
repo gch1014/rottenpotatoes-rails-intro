@@ -15,6 +15,7 @@ class MoviesController < ApplicationController
     end
 
     if !params[:home].present?
+      params[:ratings] = session[:selected_ratings]
       params[:sort] = session[:selected_sort]
     end
     session[:selected_sort] = params[:sort]
