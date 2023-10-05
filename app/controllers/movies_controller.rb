@@ -25,7 +25,7 @@ class MoviesController < ApplicationController
     else
       @ratings_to_show = @all_ratings.keys
     end
-hi
+
     @movies = Movie.with_ratings(@ratings_to_show)
     
     @sorting_header = session[:selected_sort]
