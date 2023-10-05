@@ -10,10 +10,10 @@ class MoviesController < ApplicationController
 
     @all_ratings = Movie.all_ratings 
     
-    if !params[:home].present?
-      params[:sort] = session[:selected_sort]
-      params[:ratings] = session[:selected_ratings]
-    end
+   # if !params[:home].present?
+    #  params[:sort] = session[:selected_sort]
+     # params[:ratings] = session[:selected_ratings]
+   # end
 
     session[:selected_sort] = params[:sort]
     session[:selected_ratings] = params[:ratings]
