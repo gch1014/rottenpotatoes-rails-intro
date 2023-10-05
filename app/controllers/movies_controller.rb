@@ -12,13 +12,11 @@ class MoviesController < ApplicationController
     
 
     if params[:home].present?
-      if !session[:selected_ratings].nil? && params[:ratings].blank?
-        redirect_to movies_path(:sort => session[:selected_sort], :ratings => session[:selected_ratings])
-      elsif !params[:sort].blank?
-	redirect_to movies_path(:sort => session[:selected_sort])
-      end
+      redirect_to movies_path(:sort => session[:selected_sort])
+    elsif !session[:selected_ratings].nil? && params[:ratings].blank?
+      redirect_to movies_path(:sort => session[:selected_sort], :ratings => session[:selected_ratings])
     end
-    
+
     session[:selected_sort] = params[:sort]
     session[:selected_ratings] = params[:ratings]
 
@@ -26,7 +24,7 @@ class MoviesController < ApplicationController
     if ratings_checked.present?
       @ratings_to_show = ratings_checked.keys
     else
-      @ratings_to_show = Movie.all_ratings()
+      @ratings_to_show = @all_ratings.keys
     end
 
     @movies = Movie.with_ratings(@ratings_to_show)
