@@ -15,8 +15,10 @@ class MoviesController < ApplicationController
       else
         redirect_to movies_path(:ratings => session[:ratings])
       end
-   # elsif !params[:home].present?
-    #  redirect_to movies_path(:sort => session[:sort])
+    else
+      if !params[:home].present?
+        redirect_to movies_path(:sort => session[:sort])
+      end
     end
     session[:selected_sort] = params[:sort]
     session[:selected_ratings] = params[:ratings]
