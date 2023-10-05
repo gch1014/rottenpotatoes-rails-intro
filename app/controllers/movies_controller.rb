@@ -24,7 +24,7 @@ class MoviesController < ApplicationController
     if ratings_checked.present?
       @ratings_to_show = ratings_checked.keys
     else
-      @ratings_to_show = Movie.all_ratings
+      @ratings_to_show = Movie.all_ratings()
     end
 
     @movies = Movie.with_ratings(@ratings_to_show)
