@@ -9,13 +9,10 @@ class MoviesController < ApplicationController
   def index
 
     @all_ratings = Movie.all_ratings 
-    if !session[:selected_ratings].nil? && params[:ratings].blank?
-      redirect_to movies_path(:ratings => session[:ratings])
+    if params[:sort].blank? && params[:ratings].blank? && (!session[:sort].blank? || !session[:ratings].blank?)  
+      redirect_to movies_path(:ratings => session[:ratings], :sort => session[:sort])
     end
     
-    if !params[:home].present?
-      redirect_to movies_path(:sort => session[:sort])
-    end
     session[:selected_sort] = params[:sort]
     session[:selected_ratings] = params[:ratings]
 
