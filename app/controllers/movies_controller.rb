@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
 
     @all_ratings = Movie.all_ratings 
     if !params[:home].present?
-      redirect_to movies_path(:sort => session[:selected_sort]
+      redirect_to movies_path(:sort => session[:selected_sort])
     end
 
     session[:selected_sort] = params[:sort]
