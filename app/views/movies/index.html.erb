@@ -40,10 +40,10 @@
           <%= movie.release_date %>
         </td>
         <td>
-          <%= link_to "More about #{movie.title}", movie_path(movie) %>
+          <%= link_to "More about #{movie.title}", movie_path(movie, home: 1) %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Add new movie', new_movie_path, :class => 'btn btn-primary' %>
+<%= link_to 'Add new movie', new_movie_path(home: 1), :class => 'btn btn-primary' %>
