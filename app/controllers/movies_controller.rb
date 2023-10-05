@@ -34,7 +34,8 @@ class MoviesController < ApplicationController
     elsif @sorting_header == 'releasedate'
       @movies = @movies.order(:release_date)
     end
-
+    
+    redirect_to movies_path(ratings: @ratings_to_show, sort: @sorting_header)
   end
 
   def new
