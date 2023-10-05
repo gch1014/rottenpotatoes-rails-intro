@@ -8,6 +8,12 @@ class MoviesController < ApplicationController
 
   def index
     @sorting_header = params[:sort]
+    if @sorting_header == 'movietitle'
+      @movies = @movies.order(:title)
+    elsif @sorting_header == 'releasedate'
+      @movies = @movies.order(:release_date)
+    end
+
     @all_ratings = Movie.all_ratings 
     
     ratings_checked = params[:ratings]

@@ -17,7 +17,6 @@
 <table class="table table-striped col-md-12" id="movies">
   <thead>
     <tr>
-      <%= "Sorting Header: #{@sorting_header}" %>
       <th class="<%= (@sorting_header == 'movietitle') ? 'hilite text-primary' : '' %>">
         <%= link_to 'Movie Title', movies_path(sort: 'movietitle'), id: 'title_header' %>
       </th>	
