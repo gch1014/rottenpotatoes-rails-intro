@@ -23,7 +23,7 @@ class MoviesController < ApplicationController
     if ratings_checked.present?
       @ratings_to_show = ratings_checked.keys
     else
-      @ratings_to_show = @all_ratings.keys
+      @ratings_to_show = Array.new
     end
 
     @movies = Movie.with_ratings(@ratings_to_show)
@@ -34,7 +34,7 @@ class MoviesController < ApplicationController
     elsif @sorting_header == 'releasedate'
       @movies = @movies.order(:release_date)
     end
-    
+
   end
 
   def new
