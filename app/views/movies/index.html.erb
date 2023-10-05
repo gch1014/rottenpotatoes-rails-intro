@@ -18,11 +18,11 @@
   <thead>
     <tr>
       <th class="<%= (@sorting_header == 'movietitle') ? 'hilite text-primary' : '' %>">
-        <%= link_to 'Movie Title', movies_path(sort: 'movietitle'), id: 'title_header' %>
+        <%= link_to 'Movie Title', movies_path(sort: 'movietitle', ratings: Hash[@ratings_to_show.map { |rating| [rating, '1'] }]), id: 'title_header' %>
       </th>	
       <th>Rating</th>
       <th class="<%= (@sorting_header == 'releasedate') ? 'hilite text-primary' : '' %>">
-        <%= link_to 'Release Date', movies_path(sort: 'releasedate'), id: 'release_date_header' %>
+        <%= link_to 'Release Date', movies_path(sort: 'releasedate', ratings: Hash[@ratings_to_show.map { |rating| [rating, '1'] }]), id: 'release_date_header' %>
       </th>
       <th>More Info</th>
     </tr>
