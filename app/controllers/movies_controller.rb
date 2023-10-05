@@ -7,12 +7,6 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @sorting_header = params[:sort]
-    if @sorting_header == 'movietitle'
-      @movies = @movies.order(:title)
-    elsif @sorting_header == 'releasedate'
-      @movies = @movies.order(:release_date)
-    end
 
     @all_ratings = Movie.all_ratings 
     
@@ -24,6 +18,13 @@ class MoviesController < ApplicationController
     end
 
     @movies = Movie.with_ratings(@ratings_to_show)
+    
+    @sorting_header = params[:sort]
+    if @sorting_header == 'movietitle'
+      @movies = @movies.order(:title)
+    elsif @sorting_header == 'releasedate'
+      @movies = @movies.order(:release_date)
+    end
   end
 
   def new
