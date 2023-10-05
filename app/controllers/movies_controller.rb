@@ -12,12 +12,9 @@ class MoviesController < ApplicationController
     if params[:home].present?
       session[:selected_ratings] = params[:ratings]
       session[:selected_sort] = params[:sort]
-    else
-      session[:selected_ratings] ||= [] 
-      session[:selected_sort] ||= []
     end 
     
-    ratings_checked = params[:ratings]
+    ratings_checked = session[:selected_ratings]
     if ratings_checked.present?
       @ratings_to_show = ratings_checked.keys
     else
@@ -26,7 +23,7 @@ class MoviesController < ApplicationController
 
     @movies = Movie.with_ratings(@ratings_to_show)
     
-    @sorting_header = params[:sort]
+    @sorting_header = session[:selected_sort]
     if @sorting_header == 'movietitle'
       @movies = @movies.order(:title)
     elsif @sorting_header == 'releasedate'
