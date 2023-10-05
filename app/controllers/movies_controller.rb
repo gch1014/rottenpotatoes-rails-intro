@@ -26,7 +26,7 @@ class MoviesController < ApplicationController
 
     @movies = Movie.with_ratings(@ratings_to_show)
     
-    @sorting_header = session[:selected_ratings]
+    @sorting_header = session[:selected_sort]
     if @sorting_header == 'movietitle'
       @movies = @movies.order(:title)
     elsif @sorting_header == 'releasedate'
